@@ -2,34 +2,13 @@ URxvt*termName:rxvt-256color
 urxvt.foreground: #dadbc7
 URxvt.background: #191919
 urxvt.scrollBar: false
-#urxvt.font: xft: Caviar Dreams-8
 urxvt.font: xft: Envy Code R-9
-#urxvt.perl-ext: tabbed
 urxvt.title: Shell
 urxvt.cursorBlink: true
-
-#urxvt.color0: #191919
-#urxvt.color1: #9dd90e
-#urxvt.color2: #51799d
-#urxvt.color15: #e6e2af 
-#urxvt.color10: #44a7fe
-#urxvt.color5: #d344fe
-#urxvt.color9: #44fe95
-#urxvt.color7: #dadbc7
-
-#urxvt.color8: #dadbc7
-#urxvt.color6: #749d51
-#urxvt.color13: #d83a00
-#urxvt.color14: #9dd90e
-#urxvt.color12: #51799d
-#urxvt.color4: #9d5181
-#urxvt.color11: #44a7fe
-#urxvt.color3: #9dd90e
 
 urxvt.pointerColor: #9dd90e
 urxvt.cursorColor: #dadbc7
 urxvt.cursorColor2: #191919
-#urxvt.cursorUnderline: true
 
 URxvt.perl-lib : ~/.urxvt/perl/
 URxvt.perl-ext-common: default,matcher,fontsize
