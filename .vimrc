@@ -35,7 +35,6 @@
   syntax on "enable syntax coloring
   colorscheme mushishi "select specific color theme
 
-
 "________________________________
 " SET OPTIONS
 
@@ -43,12 +42,12 @@
   set nu " set number lines on
   set mouse=a " enable mouse in vim
   set wildmenu " enable completion menu for : commands like :e
-  set laststatus=2 " enable second status bar
+  set laststatus=2 " enable second status bar 
   set hlsearch " set highlighted research results
   set pumheight=10 " Set completion menu width to 10
   set backspace=2 " Make Backspace work on EDF computer
-  set ignorecase smartcase "ignore case when search is all in lowercase
-  set wildignore=*.obj,*.exe,*.o,*.swp,*.dvi,*.aux,*.pdf "ignore those file extensions when :e
+  set ignorecase smartcase "ignore case when search is all in lowercase 
+  set wildignore=*.obj,*.exe,*.o,*.swp,*.dvi,*.aux,*.pdf "ignore those file extensions when :e 
   set tabstop=2 shiftwidth=2 noexpandtab "Change ridiculous 8-wide tabs
   set scrolloff=10 " Keep a few lines after the current for context
   set showcmd " display incomplete commands
@@ -134,15 +133,15 @@
 "________________________________
 " OTHER THINGS
 
-" Make S-Tab work on EDF computer
-  "exe 'set t_kB=' . nr2char(27) . '[Z'
+  " Make S-Tab work on EDF computer
+  exe 'set t_kB=' . nr2char(27) . '[Z'
 
-" automatically open and close the popup menu / preview window
+  " automatically open and close the popup menu / preview window
   au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-" pattern recognition of opencl code
+  " pattern recognition of opencl code
   augroup filetype
-    au BufRead,BufNewFile *.cl set filetype=opencl
+    au BufRead,BufNewFile *.cl  set filetype=opencl
     au BufRead,BufNewFile *.txx set filetype=cpp
     au BufRead,BufNewFile *.tex set tw=80
     au BufRead,BufNewFile *.tex set spell
@@ -164,4 +163,3 @@ fun! ToggleDimInactiveWin()
     en
     let g:opt_DimInactiveWin=!g:opt_DimInactiveWin
 endfun
-
