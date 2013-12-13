@@ -5,6 +5,7 @@
   "call pathogen#helptags()
 
   filetype off
+  let g:vundle_default_git_proto = 'git'
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
   " let Vundle manage Vundle
@@ -17,6 +18,7 @@
   Bundle 'tpope/vim-fugitive'
   Bundle 'Lokaltog/vim-easymotion'
   Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+  Bundle 'chrisbra/NrrwRgn' 
   "Bundle 'tpope/vim-rails.git'
   "Bundle 'Valloric/YouCompleteMe'
   Bundle 'justmao945/vim-clang'
