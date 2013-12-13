@@ -1,7 +1,32 @@
+*.foreground: #dadbc7
+*.background: #292929
+*.scrollBar: false
+!black
+*color0: rgb:29/29/29
+*color8: rgb:66/66/66
+!red
+*color1: rgb:e8/4f/4f
+*color9: rgb:d2/3d/3d
+!green
+*color2: rgb:b7/ce/42
+*color10: rgb:bd/e0/77
+!yellow
+*color3: rgb:fe/a6/3c
+*color11: rgb:ff/e8/63
+!blue
+*color4: rgb:66/a9/b9
+*color12: rgb:aa/cc/bb
+!magenta
+*color5: rgb:b7/41/6e
+*color13: rgb:e1/6a/98
+!cyan
+*color6: rgb:6d/87/8d
+*color14: rgb:42/71/7b
+!white
+*color7: rgb:cc/cc/cc
+*color15: rgb:ff/ff/ff
+
 URxvt*termName:rxvt-256color
-urxvt.foreground: #dadbc7
-URxvt.background: #191919
-urxvt.scrollBar: false
 urxvt.font: xft: Envy Code R-9
 urxvt.title: Shell
 urxvt.cursorBlink: true
@@ -19,29 +44,3 @@ URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt.keysym.M-plus: perl:font-increase
 URxvt.keysym.M-minus: perl:font-decrease
 URxvt.keysym.M-equal: perl:font-reset
-
-!black
-#*color0: #222222
-*color0: #191919
-*color8: #666666
-!red
-*color1: #E84F4F
-*color9: #D23D3D
-!green
-*color2: #B7CE42
-*color10: #BDE077
-!yellow
-*color3: #FEA63C
-*color11: #FFE863
-!blue
-*color4: #66A9B9
-*color12: #AACCBB
-!magenta
-*color5: #B7416E
-*color13: #E16A98
-!cyan
-*color6: #6D878D
-*color14: #42717B
-!white
-*color7: #CCCCCC
-*color15: #FFFFFF
