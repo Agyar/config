@@ -35,8 +35,8 @@ hi FoldColumn term=standout ctermfg=4 ctermbg=7
 
 hi DiffAdd term=none cterm=none ctermbg=6 ctermfg=7
 hi DiffDelete term=none cterm=none ctermfg=0 ctermbg=0
-hi DiffChange term=none cterm=none ctermbg=0 ctermfg=1
-hi DiffText term=none cterm=none ctermbg=5 ctermfg=7
+hi DiffChange term=none cterm=none ctermbg=5 ctermfg=7
+hi DiffText term=none cterm=none ctermbg=7 ctermfg=0
 
 " Colors for syntax highlighting
 hi Comment  ctermfg=8
