@@ -1,35 +1,50 @@
 "________________________________
 " PLUGIN MANAGER
 
-  "call pathogen#infect()
-  "call pathogen#helptags()
-
+  set nocompatible
   filetype off
-  let g:vundle_default_git_proto = 'git'
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set rtp+=~/.vim/bundle/Vundle.vim/
+  call vundle#begin()
   " let Vundle manage Vundle
   " required! 
-  Bundle 'gmarik/vundle'
+  Plugin 'gmarik/Vundle.vim'
 
-  " My Bundles here:
+  " My Plugins here:
   "
   " original repos on github
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'Lokaltog/vim-easymotion'
-  Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-  Bundle 'chrisbra/NrrwRgn' 
-  "Bundle 'tpope/vim-rails.git'
-  "Bundle 'Valloric/YouCompleteMe'
-  Bundle 'justmao945/vim-clang'
-  Bundle 'SirVer/ultisnips'
-  Bundle 'ervandew/supertab'
-  Bundle 'scrooloose/nerdcommenter'
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'Lokaltog/vim-easymotion'
+  Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+ 
+  " Completion plugins
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'vim-scripts/AutoComplPop'
+  Plugin 'ervandew/supertab'
+  
+  Plugin 'SirVer/ultisnips'
+  Plugin 'honza/vim-snippets'
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'bling/vim-airline'
+  Plugin 'majutsushi/tagbar'
+
+  Plugin 'junegunn/goyo.vim'
+  Plugin 'junegunn/limelight.vim'
+  "Plugin 'garybernhardt/pycomplexity'
+  "Plugin 'airblade/vim-gitgutter'
+
+  " make the cpu burn and vim lags
+  "Plugin 'gabrielelana/vim-markdown' 
+
+  Plugin 'Agyar/vim-calzone'
+  
   " vim-scripts repos
-  Bundle 'L9'
-  Bundle 'FuzzyFinder'
+  Plugin 'L9'
+  Plugin 'FuzzyFinder'
+ 
   " non github repos
-  Bundle 'git://git.wincent.com/command-t.git'
+  Plugin 'git://git.wincent.com/command-t.git'
+
+  call vundle#end()
 "________________________________
 " BASIC THINGS
 
@@ -41,8 +56,9 @@
 " SET OPTIONS
 
   set ai " set auto indent
-  set nu " set number lines on
+  "set nu " set number lines on
   set mouse=a " enable mouse in vim
+  set ttymouse=xterm2 " enable window resize by mouse when running under tmux/xterm
   set wildmenu " enable completion menu for : commands like :e
   set laststatus=2 " enable second status bar 
   set hlsearch " set highlighted research results
@@ -66,6 +82,7 @@
   set cinkeys-=0# " force vim to indent #pragma stuff
   set hidden " keep buffers and history instead of closing them when :e
   set infercase " allow for a smatter case sensitive completion
+  set nowrapscan " do not loop when searching
 
 "________________________________
 " LET OPTIONS
@@ -78,25 +95,35 @@
   let mapleader="," " set the map leader
   let ttags_display='locations' " can be locations, quickfix, tlib
   let g:snips_author = 'Benjamin Lorendeau' "use for some snipmate completion
-"let g:acp_enableAtStartup = 0
   let g:netrw_list_hide= '.*\.swp$,.*\.o$,*\.aux,*\.dvi' "make :Sexplore ignore files like .o and .swp in menu
-" Clang completion specific options
-  "let g:clang_use_library=1 "let clang use the library instead of the bin, making it faster
-  "let g:clang_library_path="/home/C26973/Software/Clang/lib/" "set the clang library path
-  "let g:clang_complete_copen=1 "used to show clang errors in the quickfix window, aimed to be used with :ClangCheck
-  "let g:clang_user_options='|| exit 0' "might be needed to get it working
-  "let g:clang_complete_auto=1 "let completion being poped out automatically
-  "let g:clang_hl_errors=1 "let vim highlight errors detected by clang, doesn't seem to work anyway
 
-  "let g:airline_theme='powerlineish'
-  "let g:airline_detect_whitespace=0
+  let g:airline#extensions#whitespace#enabled = 0
   "let g:airline_inactive_collapse=1
-  "let g:airline_left_sep = ''
-  "let g:airline_right_sep = ''
+  let g:airline_left_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_alt_sep = ''
+
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+  let g:airline#extensions#tabline#right_sep = ''
+  let g:airline#extensions#tabline#right_alt_sep = ''
+
+  let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+
+  let g:SuperTabDefaultCompletionType = '<C-Tab>'
+
+  let g:ycm_confirm_extra_conf = 0
+
+  let g:limelight_conceal_ctermfg = 8
 
 "________________________________
 " MAPPINGS
-
+ 
+  nnoremap <Leader>h :Calzone<CR>
+  nnoremap <Leader>g :Goyo<CR>
 " easily navigate through tabs with <Tab>
   nnoremap <Tab> :tabnext<CR>
   nnoremap <S-Tab> :tabprevious<CR>
@@ -129,8 +156,12 @@
   nnoremap Y y$
 
 " Clear highlight when refreshing.
-  nnoremap <C-L> :nohls<CR><C-L>
+  nnoremap <C-L> :nohls<CR>:colorscheme mushishi<CR><C-L>
   inoremap <C-L> <C-O>:nohls<CR>
+
+" normal mode repetition made easy on azerty keyboard
+  noremap ; .
+  noremap . ;
 
 "________________________________
 " OTHER THINGS
@@ -143,11 +174,34 @@
 
   " pattern recognition of opencl code
   augroup filetype
+    au BufWinEnter *.c let w:m2=matchadd('Error', '\%>80v.\+', -1)
+    au BufWinEnter *.h let w:m2=matchadd('Error', '\%>80v.\+', -1)
+    au BufWinEnter *.cxx let w:m2=matchadd('Error', '\%>80v.\+', -1)
+    au BufWinEnter *.cpp let w:m2=matchadd('Error', '\%>80v.\+', -1)
+    au BufWinEnter *.hxx let w:m2=matchadd('Error', '\%>80v.\+', -1)
+    au BufWinEnter *.hpp let w:m2=matchadd('Error', '\%>80v.\+', -1)
     au BufRead,BufNewFile *.cl  set filetype=opencl
     au BufRead,BufNewFile *.txx set filetype=cpp
     au BufRead,BufNewFile *.tex set tw=80
     au BufRead,BufNewFile *.tex set spell
+    au BufRead,BufNewFile *.py  set tabstop=8 expandtab shiftwidth=4 softtabstop=4
   augroup END
+
+let opt_HiIfd=0
+fun! ToggleHiIfd()
+  if g:opt_HiIfd
+    windo syntax clear ifs 
+    windo syntax clear ife
+  else 
+    windo syntax region ifs start="^\s*#ifd" end="#\(else\|endif\)"me=e-6
+    windo syntax region ife start="#else" end="#endif"
+    "windo hi ifs cterm=reverse term=reverse
+    "windo hi ifs ctermbg=1
+    windo hi def link ifs DiffChange
+    windo hi def link ife Visual
+  en
+  let g:opt_HiIfd=!g:opt_HiIfd
+endfun
 
 let opt_DimInactiveWin=0
 hi Inactive ctermbg=7
@@ -165,3 +219,49 @@ fun! ToggleDimInactiveWin()
     en
     let g:opt_DimInactiveWin=!g:opt_DimInactiveWin
 endfun
+
+"autocmd! User GoyoLeave
+"autocmd User GoyoLeave nested source /home/ben/.vimrc | silent loadview
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  "Limelight
+  " easily navigate through buffers instead of tabs with <Tab> 
+  " in goyo mode. Mainly to maintain goyo mode.
+  nnoremap <Tab> :bnext<CR>
+  nnoremap <S-Tab> :bprevious<CR>
+endfunction
+
+function! s:goyo_leave()
+  set showmode 
+  set showcmd 
+  set scrolloff=10
+  "Limelight! 
+  nnoremap <Tab> :tabbnext<CR>
+  nnoremap <S-Tab> :tabbprevious<CR>
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang 
+      qa!
+    else 
+      qa 
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter 
+autocmd! User GoyoLeave
+autocmd User GoyoEnter nested call <SID>goyo_enter()
+autocmd User GoyoLeave nested call <SID>goyo_leave()
+
+function! ShowSignColumn()
+  sign define dummy
+  execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('') 
+endfunc 
+au BufRead,BufNewFile * call ShowSignColumn()
+

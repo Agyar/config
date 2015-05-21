@@ -1,9 +1,12 @@
 " Vim color file
-" Maintainer: Benjamin Lorendeau 
-" Last Change: 2013-12-13
+" Maintainer: David Ne\v{c}as (Yeti) <yeti@physics.muni.cz>
+" Last Change: 2003-04-23
 " URL: http://trific.ath.cx/Ftp/vim/colors/peachpuff.vim
 
-" Note: No GUI color. Based on peachpuff colorscheme
+" This color scheme uses a peachpuff background (what you've expected when it's
+" called peachpuff?).
+"
+" Note: Only GUI colors differ from default, on terminal it's just `light'.
 
 " First remove all existing highlighting.
 set background=light
@@ -12,14 +15,16 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "mushishi"
+let colors_name = "peachpuff"
 
-hi SpecialKey term=bold ctermfg=4 
-hi NonText term=bold cterm=bold ctermfg=4 
+hi Normal guibg=PeachPuff guifg=Black
+
+"hi SpecialKey term=bold ctermfg=4 
+hi SpecialKey  ctermbg=0 ctermfg=11
+hi NonText term=bold cterm=none ctermfg=0 
 hi Directory term=bold ctermfg=4 
 hi ErrorMsg term=standout ctermfg=1 ctermbg=0 
-
-hi IncSearch  cterm=reverse
+hi IncSearch  ctermbg=1 ctermfg=0
 hi Search ctermbg=1 ctermfg=0
 hi MoreMsg term=bold ctermfg=2 
 hi ModeMsg term=bold cterm=bold 
@@ -30,13 +35,14 @@ hi Visual term=reverse cterm=reverse
 hi VisualNOS term=bold,underline cterm=bold,underline 
 hi WarningMsg term=standout ctermfg=1 
 hi WildMenu term=standout ctermfg=0 ctermbg=3 
-hi Folded term=standout ctermfg=4 ctermbg=7 
-hi FoldColumn term=standout ctermfg=4 ctermbg=7 
+hi Folded term=standout ctermfg=4 ctermbg=0 
+hi FoldColumn term=standout ctermfg=4 ctermbg=0
+hi DiffAdd term=bold ctermbg=4 
+hi DiffChange term=bold ctermbg=5 
+hi DiffDelete term=bold cterm=bold ctermfg=4 ctermbg=6 
+hi DiffText term=reverse cterm=bold ctermbg=1 
 
-hi DiffAdd term=none cterm=none ctermbg=6 ctermfg=7
-hi DiffDelete term=none cterm=none ctermfg=0 ctermbg=0
-hi DiffChange term=none cterm=none ctermbg=5 ctermfg=7
-hi DiffText term=none cterm=none ctermbg=7 ctermfg=0
+hi ColorColumn ctermbg=8
 
 " Colors for syntax highlighting
 hi Comment  ctermfg=8
@@ -55,13 +61,9 @@ hi TabLineFill    ctermbg=6                  cterm=none
 hi TabLineSel     ctermbg=7  ctermfg=0   cterm=none 
 
 " -> Line info  
-hi LineNr term=underline ctermfg=8 
-" Not Working and that's too bad :(
-hi CursorLineNr   ctermbg=6 cterm=reverse
+hi LineNr term=underline ctermfg=8
 hi StatusLine     ctermbg=7    ctermfg=0   cterm=none
 hi StatusLineNC   ctermbg=6  ctermfg=0   cterm=none
-
-"hi CursorLine     cterm=reverse
 
 hi VertSplit      ctermbg=0  ctermfg=6   cterm=none
 
@@ -86,4 +88,7 @@ hi SpellRare cterm=underline ctermfg=15  ctermbg=0
 hi SpellLocal cterm=underline ctermfg=15  ctermbg=0
 
 hi Todo ctermbg=2 ctermfg=0 
-hi Function ctermfg=6 ctermbg=0
+
+hi SignColumn ctermbg=0 ctermfg=0
+"hi calzones_if ctermfg=1 ctermbg=1
+"hi calzones_else ctermfg=3 ctermbg=3
