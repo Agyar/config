@@ -101,6 +101,7 @@ alias stfc_proxy="export https_proxy=wwwcache.dl.ac.uk:8080; export http_proxy=w
 alias bw="ssh bxl60-jpf02@wonder.hartree.stfc.ac.uk"
 alias bgq="ssh bxl60-jpf02@joule.hartree.stfc.ac.uk"
 alias grid5="ssh blorendeau@access.grid5000.fr"
+alias vpantoine="ssh ben@serv.rougier.me -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine"
 
 # code_saturne
 alias csr="/home/ben/Work/Install/CS_alltoall/bin/code_saturne run --initialize"
