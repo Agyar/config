@@ -101,7 +101,8 @@ alias stfc_proxy="export https_proxy=wwwcache.dl.ac.uk:8080; export http_proxy=w
 alias bw="ssh bxl60-jpf02@wonder.hartree.stfc.ac.uk"
 alias bgq="ssh bxl60-jpf02@joule.hartree.stfc.ac.uk"
 alias grid5="ssh blorendeau@access.grid5000.fr"
-alias vpantoine="ssh ben@serv.rougier.me -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine"
+alias mygale="ssh -CY lorendeau@mygale.bordeaux.inria.fr"
+alias vpantoine="ssh ben@serv.rougier.me -p 1022 -i /home/ben/.ssh/id_rsa_vpantoine"
 
 # code_saturne
 alias csr="/home/ben/Work/Install/CS_alltoall/bin/code_saturne run --initialize"
@@ -110,3 +111,6 @@ alias miniSaturne="/home/ben/Work/Install/miniSaturne/bin/code_saturne"
 alias MPIniSaturne="/home/ben/Work/Install/miniSaturne/bin/code_saturne"
 alias trunkSaturne"/home/ben/Work/Install/CS/bin/code_saturne"
 
+# hnb rsync
+alias rsHnbSend='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpantoine -l ben" /home/ben/.hnb ben@serv.rougier.me:/home/ben'
+alias rsHnbRecv='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpantoine -l ben" ben@serv.rougier.me:/home/ben/.hnb /home/ben/.hnb'
