@@ -388,11 +388,14 @@ syn match	cUserLabel	display "\I\i*" contained
 syn match	cBitField	display "^\s*\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
 syn match	cBitField	display ";\s*\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
 
-syn match       cMPIType   "MPI_[A-Z][A-Z_a-z2 ]*\ "me=e-1
+syn match       cMPIType        "MPI_[A-Z][A-Z_a-z2 ]*\ "me=e-1
 syn match       cCommunicator   "MPI_[A-Z][A-Z_a-z2 ]*("me=e-1
 syn match       cCSBFT          "BFT_[A-Z]*("me=e-1
 syn match       cCStype         "cs_[a-z_]*_t\ "me=e-1
 syn match       cCSfunc         "cs_[a-z_]*("me=e-1
+
+syn match       cScotch         "SCOTCH_[A-Z_a-z2 ]*\ "me=e-1
+syn match       cScotchFun      "SCOTCH_[a-z][A-Z_a-z2 ]*("me=e-1
 
 syn region      lTodo           start="^\s*\(// \|/\* \)\(TODO\|FIXME\|XXX\|README\)" end="$"
 syn region      eTodo           start="^\s*\(/\* \)\(TODO\|FIXME\|XXX\|README\)" end="\*/" 
@@ -478,6 +481,8 @@ hi def link cCSBFT              String
 hi def link lTodo               Todo
 hi def link eTodo               Todo
 hi def link cMPIType            Statement
+hi def link cScotch             Statement
+hi def link cScotchFun          Statement
 hi def link cCStype             cType
 hi def link cCSfunc             cSpecial
 hi def link sdef                Todo
