@@ -83,6 +83,8 @@
   set hidden " keep buffers and history instead of closing them when :e
   set infercase " allow for a smatter case sensitive completion
   set nowrapscan " do not loop when searching
+  set nobackup " do not store files~ 
+  set noswapfile " stop fucking swaping files
 
 "________________________________
 " LET OPTIONS
@@ -118,6 +120,8 @@
   let g:ycm_confirm_extra_conf = 0
 
   let g:limelight_conceal_ctermfg = 8
+
+  let g:goyo_width = 190
 
 "________________________________
 " MAPPINGS

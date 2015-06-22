@@ -1,17 +1,20 @@
 *foreground: #dadbc7
-*background: #292929
+!*background: #292929
+*background: #282c34
 .cursorBlink: true
 *boldMo6e: false
 *termName: xterm-256color
 *faceName: Inconsolata for Powerline
-*faceSize: 13
+*faceSize: 10
+Xft.dpi: 96
 
 *selectToClipboard: true
 
 
 urxvt.pointerColor: #9dd90e
 urxvt.cursorColor: #dadbc7
-urxvt.cursorColor2: #292929
+!urxvt.cursorColor2: #292929
+urxvt.cursorColor2: #282c34
 
 URxvt.perl-lib : ~/.urxvt/perl/
 URxvt.perl-ext-common: default,matcher,fontsize
@@ -24,7 +27,8 @@ URxvt.keysym.M-minus: perl:font-decrease
 URxvt.keysym.M-equal: perl:font-reset
 
 !black
-*color0: #292929
+!*color0: #292929
+*color0: #282c34
 *color8: #666666
 !red
 *color1: #E84F4F
