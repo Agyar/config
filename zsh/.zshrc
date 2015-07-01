@@ -93,16 +93,16 @@ export PATH="/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/defau
 alias wgrep="grep -IRnm1 --exclude-dir=.svn --exclude-dir=.git --color=always"
 alias rgrep="grep -IRn --color=always"
 
-alias hnb="/home/ben/Programming/Repos/lhnb/src/hnb"
+alias hnb="/home/ben/Code/Repos/lhnb/src/hnb"
 
 # machines 
 alias stfc="ssh djj55689@cegvig6.dl.ac.uk"
 alias stfc_proxy="export https_proxy=wwwcache.dl.ac.uk:8080; export http_proxy=wwwcache.dl.ac.uk:8080"
-alias bw="ssh bxl60-jpf02@wonder.hartree.stfc.ac.uk"
-alias bgq="ssh bxl60-jpf02@joule.hartree.stfc.ac.uk"
+alias stfc_bw="ssh bxl60-jpf02@wonder.hartree.stfc.ac.uk"
+alias stfc_bgq="ssh bxl60-jpf02@joule.hartree.stfc.ac.uk"
 alias grid5="ssh blorendeau@access.grid5000.fr"
 alias mygale="ssh -CY lorendeau@mygale.bordeaux.inria.fr"
-alias vpantoine="ssh ben@serv.rougier.me -p 1022 -i /home/ben/.ssh/id_rsa_vpantoine"
+alias vpantoine="ssh ben@serv.rougier.me -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine"
 
 # code_saturne
 alias csr="/home/ben/Work/Install/CS_alltoall/bin/code_saturne run --initialize"
@@ -112,5 +112,5 @@ alias MPIniSaturne="/home/ben/Work/Install/miniSaturne/bin/code_saturne"
 alias trunkSaturne"/home/ben/Work/Install/CS/bin/code_saturne"
 
 # hnb rsync
-alias rsHnbSend='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpantoine -l ben" /home/ben/.hnb ben@serv.rougier.me:/home/ben'
-alias rsHnbRecv='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpantoine -l ben" ben@serv.rougier.me:/home/ben/.hnb /home/ben/.hnb'
+alias rsHnbSend='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine -l ben" /home/ben/.hnb ben@serv.rougier.me:/home/ben'
+alias rsHnbRecv='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine -l ben" ben@serv.rougier.me:/home/ben/.hnb /home/ben/.hnb'
