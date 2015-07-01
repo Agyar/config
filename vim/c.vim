@@ -388,13 +388,14 @@ syn match	cUserLabel	display "\I\i*" contained
 syn match	cBitField	display "^\s*\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
 syn match	cBitField	display ";\s*\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
 
-syn match       cMPIType        "MPI_[A-Z][A-Z_a-z2 ]*\ "me=e-1
+syn match       cMPIType        "MPI_[A-Z][A-Z_a-z2]*\ "me=e-1
 syn match       cCommunicator   "MPI_[A-Z][A-Z_a-z2 ]*("me=e-1
 syn match       cCSBFT          "BFT_[A-Z]*("me=e-1
+syn match       cCSbft          "bft_[a-z]*("me=e-1
 syn match       cCStype         "cs_[a-z_]*_t\ "me=e-1
 syn match       cCSfunc         "cs_[a-z_]*("me=e-1
 
-syn match       cScotch         "SCOTCH_[A-Z_a-z2 ]*\ "me=e-1
+syn match       cScotch         "SCOTCH_[A-Z_a-z2]*\ "me=e-1
 syn match       cScotchFun      "SCOTCH_[a-z][A-Z_a-z2 ]*("me=e-1
 
 syn region      lTodo           start="^\s*\(// \|/\* \)\(TODO\|FIXME\|XXX\|README\)" end="$"
@@ -476,15 +477,16 @@ hi def link cCppInElse2		cCppOutIf2
 hi def link cCppOutIf2		cCppOut2  " Old syntax group for #if 0 body
 hi def link cCppOut2		cCppOut  " Old syntax group for #if of #if 0
 hi def link cCppOut		Comment
-hi def link cCommunicator       Statement
-hi def link cCSBFT              String
 hi def link lTodo               Todo
 hi def link eTodo               Todo
-hi def link cMPIType            Statement
-hi def link cScotch             Statement
-hi def link cScotchFun          Statement
-hi def link cCStype             cType
-hi def link cCSfunc             cSpecial
+hi def link cMPIType            MPI
+hi def link cCommunicator       MPI
+hi def link cScotch             Scotch
+hi def link cScotchFun          Scotch
+hi def link cCStype             CS
+hi def link cCSfunc             CS
+hi def link cCSBFT              CS
+hi def link cCSbft              CS
 hi def link sdef                Todo
 
 "hi ifs cterm=reverse term=reverse 

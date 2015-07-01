@@ -163,6 +163,9 @@
   nnoremap <C-L> :nohls<CR>:colorscheme mushishi<CR><C-L>
   inoremap <C-L> <C-O>:nohls<CR>
 
+  " open tag in a new tab
+  nnoremap <C-Return> <C-w><C-]><C-w>T
+
 " normal mode repetition made easy on azerty keyboard
   noremap ; .
   noremap . ;

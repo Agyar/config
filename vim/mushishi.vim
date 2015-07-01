@@ -90,5 +90,13 @@ hi SpellLocal cterm=underline ctermfg=15  ctermbg=0
 hi Todo ctermbg=2 ctermfg=0 
 
 hi SignColumn ctermbg=0 ctermfg=0
+
+hi Scotch ctermbg=0 ctermfg=16
+hi CS ctermbg=0 ctermfg=18
+hi MPI ctermbg=0 ctermfg=21
+hi cString ctermbg=0 ctermfg=13
+
+
+
 "hi calzones_if ctermfg=1 ctermbg=1
 "hi calzones_else ctermfg=3 ctermbg=3

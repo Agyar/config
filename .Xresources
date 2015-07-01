@@ -1,10 +1,13 @@
 *foreground: #dadbc7
 !*background: #292929
+!*customization: -color
 *background: #282c34
 .cursorBlink: true
 *boldMo6e: false
 *termName: xterm-256color
 *faceName: Inconsolata for Powerline
+URxvt*font: xft:Inconsolata for Powerline-12
+URxvt*scrollBar: false
 *faceSize: 10
 Xft.dpi: 96
 
@@ -17,14 +20,14 @@ urxvt.cursorColor: #dadbc7
 urxvt.cursorColor2: #282c34
 
 URxvt.perl-lib : ~/.urxvt/perl/
-URxvt.perl-ext-common: default,matcher,fontsize
-URxvt.urlLauncher: chromium-browser
+URxvt.perl-ext-common: default,matcher,resize-font
+URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 2
-URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?& @#-]*[\\w/-]
 
-URxvt.keysym.M-plus: perl:font-increase
-URxvt.keysym.M-minus: perl:font-decrease
-URxvt.keysym.M-equal: perl:font-reset
+URxvt.resize-font.bigger: M-plus
+URxvt.resize-font.smaller: M-minus
+URxvt.resize-font.reset: M-equal
 
 !black
 !*color0: #292929
@@ -51,3 +54,13 @@ URxvt.keysym.M-equal: perl:font-reset
 !white
 *color7: #CCCCCC
 *color15: #FFFFFF
+!orange
+*color16: #FF8349
+*color17: #FF5100
+!blue light
+*color18: #6CCFFF
+*color19: #49C3FF
+!yellow light 
+*color20: #E3FD4D
+*color21: #E1FF30
+
