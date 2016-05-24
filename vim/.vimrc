@@ -18,8 +18,9 @@
  
   " Completion plugins
   Plugin 'Valloric/YouCompleteMe'
-  Plugin 'vim-scripts/AutoComplPop'
-  Plugin 'ervandew/supertab'
+  Plugin 'rdnetto/YCM-Generator'
+"  Plugin 'vim-scripts/AutoComplPop'
+"  Plugin 'ervandew/supertab'
   
   Plugin 'SirVer/ultisnips'
   Plugin 'honza/vim-snippets'
@@ -27,6 +28,7 @@
   Plugin 'bling/vim-airline'
   Plugin 'majutsushi/tagbar'
 
+  Plugin 'wellle/visual-split.vim'
   Plugin 'junegunn/goyo.vim'
   Plugin 'junegunn/limelight.vim'
   "Plugin 'garybernhardt/pycomplexity'
@@ -34,8 +36,12 @@
 
   " make the cpu burn and vim lags
   "Plugin 'gabrielelana/vim-markdown' 
+  
+  Plugin 'vim-scripts/quick-scope'
 
   Plugin 'Agyar/vim-calzone'
+
+  Plugin 'lervag/vimtex'
   
   " vim-scripts repos
   Plugin 'L9'
@@ -44,13 +50,18 @@
   " non github repos
   Plugin 'git://git.wincent.com/command-t.git'
 
+  " newest cscope unite
+  Plugin 'Shougo/unite.vim'
+  Plugin 'Shougo/vimproc.vim'
+  Plugin 'vim-scripts/vim-unite-cscope'
+
   call vundle#end()
 "________________________________
 " BASIC THINGS
 
   filetype plugin indent on "set indentation plugin depending on filetype
   syntax on "enable syntax coloring
-  colorscheme mushishi "select specific color theme
+  colorscheme mushishi
 
 "________________________________
 " SET OPTIONS
@@ -85,6 +96,7 @@
   set nowrapscan " do not loop when searching
   set nobackup " do not store files~ 
   set noswapfile " stop fucking swaping files
+  set tags=/home/ben/.thesis_tags,./tags,tags " add homie tags by default
 
 "________________________________
 " LET OPTIONS
@@ -100,7 +112,7 @@
   let g:netrw_list_hide= '.*\.swp$,.*\.o$,*\.aux,*\.dvi' "make :Sexplore ignore files like .o and .swp in menu
 
   let g:airline#extensions#whitespace#enabled = 0
-  "let g:airline_inactive_collapse=1
+ " let g:airline_inactive_collapse=1
   let g:airline_left_sep = ''
   let g:airline_right_sep = ''
   let g:airline_left_alt_sep = ''
@@ -126,6 +138,7 @@
 "________________________________
 " MAPPINGS
  
+  nnoremap <Leader>r :set readonly<CR> :call CheckRO()<CR>
   nnoremap <Leader>h :Calzone<CR>
   nnoremap <Leader>g :Goyo<CR>
 " easily navigate through tabs with <Tab>
@@ -160,7 +173,7 @@
   nnoremap Y y$
 
 " Clear highlight when refreshing.
-  nnoremap <C-L> :nohls<CR>:colorscheme mushishi<CR><C-L>
+  nnoremap <C-L> :nohls<CR>:call CheckRO()<CR><C-L>
   inoremap <C-L> <C-O>:nohls<CR>
 
   " open tag in a new tab
@@ -169,6 +182,10 @@
 " normal mode repetition made easy on azerty keyboard
   noremap ; .
   noremap . ;
+
+  "inoremap è >
+
+  "noremap <C-[> [j%0*
 
 "________________________________
 " OTHER THINGS
@@ -250,14 +267,22 @@ function! s:goyo_leave()
   set showcmd 
   set scrolloff=10
   "Limelight! 
-  nnoremap <Tab> :tabbnext<CR>
-  nnoremap <S-Tab> :tabbprevious<CR>
+  nnoremap <Tab> :tabNext<CR>
+  nnoremap <S-Tab> :tabprevious<CR>
   if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
     if b:quitting_bang 
       qa!
     else 
       qa 
     endif
+  endif
+endfunction
+
+function CheckRO()
+  if &readonly
+    colorscheme mushishi_shine
+  else
+    colorscheme mushishi
   endif
 endfunction
 
