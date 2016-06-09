@@ -29,7 +29,7 @@ hi Search ctermbg=1 ctermfg=0
 hi MoreMsg term=bold ctermfg=2 
 hi ModeMsg term=bold cterm=bold 
 hi Question term=standout ctermfg=2 
-hi VertSplit term=reverse cterm=reverse 
+"hi VertSplit term=reverse cterm=reverse 
 hi Title term=bold ctermfg=5 
 hi Visual term=reverse cterm=reverse 
 hi VisualNOS term=bold,underline cterm=bold,underline 
@@ -65,7 +65,7 @@ hi LineNr term=underline ctermfg=8
 hi StatusLine     ctermbg=7    ctermfg=0   cterm=none
 hi StatusLineNC   ctermbg=6  ctermfg=0   cterm=none
 
-hi VertSplit      ctermbg=0  ctermfg=6   cterm=none
+hi VertSplit      ctermbg=0  ctermfg=16   cterm=none
 
 " -> Menu
 hi Pmenu          ctermbg=6    ctermfg=0    cterm=none
@@ -87,7 +87,7 @@ hi SpellCap cterm=underline ctermfg=15  ctermbg=0
 hi SpellRare cterm=underline ctermfg=15  ctermbg=0
 hi SpellLocal cterm=underline ctermfg=15  ctermbg=0
 
-hi Todo ctermbg=2 ctermfg=0 
+hi Todo ctermbg=10 ctermfg=0 
 
 hi SignColumn ctermbg=0 ctermfg=0
 
@@ -95,6 +95,8 @@ hi Scotch ctermbg=0 ctermfg=16
 hi CS ctermbg=0 ctermfg=18
 hi MPI ctermbg=0 ctermfg=21
 hi cString ctermbg=0 ctermfg=13
+hi STARPU ctermbg=0 ctermfg=10
+hi DAGUE  ctermbg=0 ctermfg=12
 
 
 

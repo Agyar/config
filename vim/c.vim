@@ -391,12 +391,20 @@ syn match	cBitField	display ";\s*\I\i*\s*:\s*[1-9]"me=e-1 contains=cType
 syn match       cMPIType        "MPI_[A-Z][A-Z_a-z2]*\ "me=e-1
 syn match       cCommunicator   "MPI_[A-Z][A-Z_a-z2 ]*("me=e-1
 syn match       cCSBFT          "BFT_[A-Z]*("me=e-1
-syn match       cCSbft          "bft_[a-z]*("me=e-1
-syn match       cCStype         "cs_[a-z_]*_t\ "me=e-1
+syn match       cCSbft          "bft_[a-z_]*("me=e-1
+syn match       cCStype         "cs_[a-z_]*[0-9]*_t[\ ,)\[]"me=e-1
 syn match       cCSfunc         "cs_[a-z_]*("me=e-1
 
 syn match       cScotch         "SCOTCH_[A-Z_a-z2]*\ "me=e-1
 syn match       cScotchFun      "SCOTCH_[a-z][A-Z_a-z2 ]*("me=e-1
+
+syn match       cSTARPUtype     "starpu_[a-z_]*_t[\ ,)\[]"me=e-1
+syn match       cSTARPUfunc     "starpu_[a-z_]*[\ ]*("me=e-1
+syn match       cSTARPUmac      "STARPU_[A-Z_]*"
+
+syn match       cDagueType      "dague_[a-zA-Z_0-9]*_t[\*\ ,)\[]"me=e-1
+syn match       cDaguefunc      "dague_[a-z_]*[\ ]*("me=e-1
+
 
 syn region      lTodo           start="^\s*\(// \|/\* \)\(TODO\|FIXME\|XXX\|README\)" end="$"
 syn region      eTodo           start="^\s*\(/\* \)\(TODO\|FIXME\|XXX\|README\)" end="\*/" 
@@ -487,6 +495,11 @@ hi def link cCStype             CS
 hi def link cCSfunc             CS
 hi def link cCSBFT              CS
 hi def link cCSbft              CS
+hi def link cSTARPUmac          STARPU
+hi def link cSTARPUfunc         STARPU
+hi def link cSTARPUtype         STARPU
+hi def link cDaguefunc          DAGUE
+hi def link cDagueType          DAGUE
 hi def link sdef                Todo
 
 "hi ifs cterm=reverse term=reverse 
