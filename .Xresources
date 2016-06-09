@@ -1,16 +1,17 @@
 *foreground: #dadbc7
 !*background: #292929
 !*customization: -color
+URxvt*depth: 32
 *background: #282c34
+!*background: [80]#282c34
 .cursorBlink: true
-*boldMo6e: false
+*boldMode: false
 *termName: xterm-256color
-*faceName: Inconsolata for Powerline
-URxvt*font: xft:Inconsolata for Powerline-12
+URxvt*faceName: Inconsolata for Powerline
+URxvt*font: xft:Inconsolata for Powerline-9
 URxvt*scrollBar: false
-*faceSize: 10
-Xft.dpi: 96
-
+URxvt*faceSize: 12
+URxvt*Xft.dpi: 88
 *selectToClipboard: true
 
 
@@ -19,8 +20,8 @@ urxvt.cursorColor: #dadbc7
 !urxvt.cursorColor2: #292929
 urxvt.cursorColor2: #282c34
 
-URxvt.perl-lib : ~/.urxvt/perl/
-URxvt.perl-ext-common: default,matcher,resize-font
+URxvt.perl-lib : /home/ben/.urxvt/perl/
+URxvt.perl-ext-common: default,matcher,resize-font,fullscreen
 URxvt.url-launcher: /usr/bin/firefox
 URxvt.matcher.button: 2
 URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?& @#-]*[\\w/-]
@@ -28,6 +29,8 @@ URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?& @#-]*[\\w/-]
 URxvt.resize-font.bigger: M-plus
 URxvt.resize-font.smaller: M-minus
 URxvt.resize-font.reset: M-equal
+URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.iconFile: /usr/share/icons/Adwaita/48x48/apps/utilities-terminal.png 
 
 !black
 !*color0: #292929
@@ -63,4 +66,8 @@ URxvt.resize-font.reset: M-equal
 !yellow light 
 *color20: #E3FD4D
 *color21: #E1FF30
+!black AGAIN
+!*color0: #292929
+*color22: #282c34
+*color23: #666666
 
