@@ -3,6 +3,15 @@ export HOME=/home/ben
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR=/usr/bin/vim
 
+export TAU_PATH=/opt/tau/x86_64
+export TAU_OPTIONS="-optTauSelectFile=/home/ben/Work/Tests/function_selected_tau.txt -optRevert"
+#export TAU_COMM_MATRIX=1
+#export TAU_MAKEFILE="/opt/tau/x86_64/lib/Makefile.tau-mpi-openmp-opari"
+export TAU_MAKEFILE="/opt/tau/x86_64/lib/Makefile.tau-mpi"
+#export TAU_VALIDATE_PARALLEL=""
+
+eval "$(thefuck --alias)"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -30,7 +39,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
- DISABLE_AUTO_TITLE="true"
+ #DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 DISABLE_CORRECTION="true"
@@ -61,7 +70,35 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/ben/.gem/ruby/2.2.0/bin"
+PATH=`paste -d ":" -s << EOF
+/usr/bin
+/usr/local/sbin
+/usr/local/bin
+/usr/lib/jvm/default/bin
+/usr/bin/site_perl
+/usr/bin/vendor_perl
+/usr/bin/core_perl
+/home/ben/.gem/ruby/2.2.0/bin
+/opt/tau/x86_64/bin
+/opt/tau/x86_64/lib
+/opt/tau/x86_64/etc
+/opt/intel/compilers_and_libraries_2016.3.210/linux/bin/intel64
+/home/ben/.gem/ruby/2.3.0/bin/
+/opt/intel/vtune_amplifier_xe_2016.3.0.463186/bin64
+/opt/intel/vtune_amplifier_xe_2016.3.0.463186/lib64
+/opt/intel/vtune_amplifier_xe_2016.3.0.463186/include
+/opt/intel/inspector_xe_2016.1.3.460803/bin64
+/opt/intel/inspector_xe_2016.1.3.460803/lib64
+/opt/intel/inspector_xe_2016.1.3.460803/include
+/opt/intel/advisor_xe_2016.1.40.463413/bin64
+/opt/intel/advisor_xe_2016.1.40.463413/include
+/opt/intel/advisor_xe_2016.1.40.463413/lib64
+/home/ben/Work/Install/parsec_no_atomics/bin
+/home/ben/Work/Install/parsec_no_atomics/lib
+/home/ben/Work/Install/parsec_no_atomics/include
+/home/ben/Work/Install/parsec_no_atomics/include/dague/
+EOF
+`
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -78,7 +115,11 @@ export PATH="/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/defau
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+ #export SSH_KEY_PATH="~/.ssh/id_dsad"
+
+# STARPU SPECIFICS
+
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/home/ben/Work/Install/starpu/lib/pkgconfig:/home/ben/Work/Install/parsec/lib/pkgconfig"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -93,6 +134,8 @@ export PATH="/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/defau
 alias wgrep="grep -IRnm1 --exclude-dir=.svn --exclude-dir=.git --color=always"
 alias rgrep="grep -IRn --color=always"
 
+alias vi="vim"
+
 alias hnb="/home/ben/Code/Repos/lhnb/src/hnb"
 
 # machines 
@@ -101,7 +144,7 @@ alias stfc_proxy="export https_proxy=wwwcache.dl.ac.uk:8080; export http_proxy=w
 alias stfc_bw="ssh bxl60-jpf02@wonder.hartree.stfc.ac.uk"
 alias stfc_bgq="ssh bxl60-jpf02@joule.hartree.stfc.ac.uk"
 alias grid5="ssh blorendeau@access.grid5000.fr"
-alias mygale="ssh -CY lorendeau@mygale.bordeaux.inria.fr"
+alias mygale="ssh -CY lorendea@mygale.bordeaux.inria.fr"
 alias vpantoine="ssh ben@serv.rougier.me -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine"
 
 # code_saturne
@@ -110,7 +153,14 @@ alias cs_all_to_all_diff="/home/ben/Work/Sources/cs_trunk; cd src/mesh; svn diff
 alias miniSaturne="/home/ben/Work/Install/miniSaturne/bin/code_saturne"
 alias MPIniSaturne="/home/ben/Work/Install/miniSaturne/bin/code_saturne"
 alias trunkSaturne"/home/ben/Work/Install/CS/bin/code_saturne"
+alias FastSaturne="cd /home/ben/Work/Repos/saturne/src; ranger"
 
 # hnb rsync
 alias rsHnbSend='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine -l ben" /home/ben/.hnb ben@serv.rougier.me:/home/ben'
 alias rsHnbRecv='rsync --update -e avvvz -e "ssh -p 1022 -i /home/ben/.ssh/id_rsa_vpn_antoine -l ben" ben@serv.rougier.me:/home/ben/.hnb /home/ben/.hnb'
+
+# edf proxy variables
+alias edf_proxy="export PROXY='noevipncp2n.edf.fr:3128';export HTTP_PROXY='noevipncp2n.edf.fr:3128';export HTTPS_PROXY='noevipncp2n.edf.fr:3128';"
+alias clean_proxy="export PROXY='';export HTTP_PROXY='';export HTTPS_PROXY='';"
+alias vpninria="sudo ~/Documents/__vpn_setup/vpnsetup.sh; /opt/cisco/anyconnect/bin/vpn connect vpn.inria.fr/all"
+
