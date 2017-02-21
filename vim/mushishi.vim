@@ -88,6 +88,7 @@ hi SpellRare cterm=underline ctermfg=15  ctermbg=0
 hi SpellLocal cterm=underline ctermfg=15  ctermbg=0
 
 hi Todo ctermbg=10 ctermfg=0 
+hi Readme ctermbg=24 ctermfg=10
 
 hi SignColumn ctermbg=0 ctermfg=0
 

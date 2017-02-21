@@ -26,6 +26,7 @@
   Plugin 'honza/vim-snippets'
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'bling/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
   Plugin 'majutsushi/tagbar'
 
   Plugin 'wellle/visual-split.vim'
@@ -55,6 +56,7 @@
   Plugin 'Shougo/vimproc.vim'
   Plugin 'vim-scripts/vim-unite-cscope'
 
+  Plugin 'powerman/vim-plugin-AnsiEsc'
   call vundle#end()
 "________________________________
 " BASIC THINGS
@@ -124,19 +126,28 @@
   let g:airline#extensions#tabline#right_sep = ''
   let g:airline#extensions#tabline#right_alt_sep = ''
 
+  " YouCompleteMe parameters
   let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
   let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+  let g:ycm_confirm_extra_conf = 0
+  let g:ycm_filetype_blacklist = {}
+  let g:ycm_complete_in_comments = 1
+  let g:ycm_collect_identifiers_from_comments_and_strings = 1
+  let g:ycm_collect_identifiers_from_tags_files = 1
 
   let g:SuperTabDefaultCompletionType = '<C-Tab>'
 
-  let g:ycm_confirm_extra_conf = 0
 
   let g:limelight_conceal_ctermfg = 8
 
   let g:goyo_width = 190
 
+  let g:vimtex_echo_ignore_wait = 1
+
 "________________________________
 " MAPPINGS
+
+  nnoremap <Leader>m :w<CR> :!make<CR>
  
   nnoremap <Leader>r :set readonly<CR> :call CheckRO()<CR>
   nnoremap <Leader>h :Calzone<CR>
@@ -198,17 +209,21 @@
 
   " pattern recognition of opencl code
   augroup filetype
-    au BufWinEnter *.c let w:m2=matchadd('Error', '\%>80v.\+', -1)
-    au BufWinEnter *.h let w:m2=matchadd('Error', '\%>80v.\+', -1)
-    au BufWinEnter *.cxx let w:m2=matchadd('Error', '\%>80v.\+', -1)
-    au BufWinEnter *.cpp let w:m2=matchadd('Error', '\%>80v.\+', -1)
-    au BufWinEnter *.hxx let w:m2=matchadd('Error', '\%>80v.\+', -1)
-    au BufWinEnter *.hpp let w:m2=matchadd('Error', '\%>80v.\+', -1)
+    au BufWinEnter *.c let w:m2=matchadd('SpellBad', '\%>80v.\+', -1)
+    au BufWinEnter *.h let w:m2=matchadd('SpellBad', '\%>80v.\+', -1)
+    au BufWinEnter *.cxx let w:m2=matchadd('SpellBad', '\%>80v.\+', -1)
+    au BufWinEnter *.cpp let w:m2=matchadd('SpellBad', '\%>80v.\+', -1)
+    au BufWinEnter *.hxx let w:m2=matchadd('SpellBad', '\%>80v.\+', -1)
+    au BufWinEnter *.hpp let w:m2=matchadd('SpellBad', '\%>80v.\+', -1)
     au BufRead,BufNewFile *.cl  set filetype=opencl
     au BufRead,BufNewFile *.txx set filetype=cpp
     au BufRead,BufNewFile *.tex set tw=80
     au BufRead,BufNewFile *.tex set spell
     au BufRead,BufNewFile *.py  set tabstop=8 expandtab shiftwidth=4 softtabstop=4
+    au BufRead,BufNewFile *.txt :Goyo
+    au BufRead,BufNewFile *.txt set spell
+    au BufRead,BufNewFile *.txt set syntax=markdown
+    au BufRead,BufNewFile *.jdf set filetype=parsec
   augroup END
 
 let opt_HiIfd=0
@@ -296,4 +311,3 @@ function! ShowSignColumn()
   execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('') 
 endfunc 
 au BufRead,BufNewFile * call ShowSignColumn()
-

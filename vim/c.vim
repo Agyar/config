@@ -19,7 +19,8 @@ syn keyword	cLabel		case default
 syn keyword	cConditional	if else switch
 syn keyword	cRepeat		while for do
 
-syn keyword	cTodo		contained TODO FIXME XXX README
+syn keyword	cTodo		contained TODO FIXME XXX
+syn keyword     cReadme         contained README
 
 " It's easy to accidentally add a space after a backslash that was intended
 " for line continuation.  Some compilers allow it, which makes it
@@ -27,7 +28,7 @@ syn keyword	cTodo		contained TODO FIXME XXX README
 syn match	cBadContinuation contained "\\\s\+$"
 
 " cCommentGroup allows adding matches for special things in comments
-syn cluster	cCommentGroup	contains=cTodo,cBadContinuation
+syn cluster	cCommentGroup	contains=cTodo,cReadme,cBadContinuation
 
 " String and Character constants
 " Highlight special characters (those which have a backslash) differently
@@ -405,9 +406,15 @@ syn match       cSTARPUmac      "STARPU_[A-Z_]*"
 syn match       cDagueType      "dague_[a-zA-Z_0-9]*_t[\*\ ,)\[]"me=e-1
 syn match       cDaguefunc      "dague_[a-z_]*[\ ]*("me=e-1
 
+syn match       cParsecType      "parsec_[a-zA-Z_0-9]*_t[\*\ ,)\[]"me=e-1
+syn match       cParsecfunc      "parsec_[a-z_]*[\ ]*("me=e-1
 
-syn region      lTodo           start="^\s*\(// \|/\* \)\(TODO\|FIXME\|XXX\|README\)" end="$"
-syn region      eTodo           start="^\s*\(/\* \)\(TODO\|FIXME\|XXX\|README\)" end="\*/" 
+
+syn region      lTodo           start="^\s*\(// \|/\* \)\(TODO\|FIXME\|XXX\)" end="$"
+syn region      eTodo           start="^\s*\(/\* \)\(TODO\|FIXME\|XXX\)" end="\*/" 
+
+syn region      lReadme         start="^\s*\(// \|/\* \)\(README\)" end="$"
+syn region      eReadme         start="^\s*\(/\* \)\(README\)" end="\*/" 
 
 "syn region      sdef            start=/\s*#endif/ms=e+2 end="$" contains=cComment
 "syn region      sdef             start="^\s*#endif"hs=e+5 skip="//" end="$" contains=cPreConditMatch
@@ -479,6 +486,9 @@ hi def link cString		String
 hi def link cComment		Comment
 hi def link cSpecial		SpecialChar
 hi def link cTodo		Todo
+hi def link cReadme             Readme
+hi def link eReadme             Readme
+hi def link lReadme             Readme
 hi def link cBadContinuation	Error
 hi def link cCppOutSkip		cCppOutIf2
 hi def link cCppInElse2		cCppOutIf2
@@ -500,6 +510,8 @@ hi def link cSTARPUfunc         STARPU
 hi def link cSTARPUtype         STARPU
 hi def link cDaguefunc          DAGUE
 hi def link cDagueType          DAGUE
+hi def link cParsecfunc         DAGUE
+hi def link cParsecType         DAGUE
 hi def link sdef                Todo
 
 "hi ifs cterm=reverse term=reverse 

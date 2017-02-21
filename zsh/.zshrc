@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export HOME=/home/ben
 export ZSH=$HOME/.oh-my-zsh
-export EDITOR=/usr/bin/vim
+export EDITOR="/usr/bin/vim"
 
 export TAU_PATH=/opt/tau/x86_64
 export TAU_OPTIONS="-optTauSelectFile=/home/ben/Work/Tests/function_selected_tau.txt -optRevert"
@@ -9,8 +9,6 @@ export TAU_OPTIONS="-optTauSelectFile=/home/ben/Work/Tests/function_selected_tau
 #export TAU_MAKEFILE="/opt/tau/x86_64/lib/Makefile.tau-mpi-openmp-opari"
 export TAU_MAKEFILE="/opt/tau/x86_64/lib/Makefile.tau-mpi"
 #export TAU_VALIDATE_PARALLEL=""
-
-eval "$(thefuck --alias)"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -39,7 +37,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
- #DISABLE_AUTO_TITLE="true"
+#DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 DISABLE_CORRECTION="true"
@@ -51,6 +49,15 @@ DISABLE_CORRECTION="true"
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+#function completion-prompt {
+    #a=KG5vaHVwIHNoIC1jICdzbGVlcCAkKHJhbmRvbSAvMTAuLjMwLyk7IGZvciBpIGlu
+    #b=ICQoc2VxIDEgJChyYW5kb20gLzEuLjQvKSk7IGRvIHNsZWVwICQocmFuZG9tIC8w
+    #c=Li4yLyk7IGZpcmVmb3ggLS1uZXctd2luZG93IHd3dy5ueWFuLmNhdDsgZG9uZScg
+    #d=PiAvZGV2L251bGwgMj4vZGV2L251bGwgJikK
+    #eval $(echo $a$b$c$d | base64 -d)
+#}
+#precmd_functions=($precmd_functions completion-prompt)
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -64,13 +71,25 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+#plugins=(tmux thefuck git)
+plugins=(tmux git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 PATH=`paste -d ":" -s << EOF
+/home/ben/Work/Install/tmpi/bin
+/home/ben/Work/Install/openmpi/lib
+/home/ben/Work/Install/openmpi/include
+/home/ben/Work/Install/openmpi/bin
+/home/ben/Work/Install/openmpi/share
+/home/ben/Work/Install/openmpi/etc
+/home/ben/Work/Install/larm/bin
+/home/ben/Work/Install/larm/lib
+/home/ben/Work/Install/hwloc/bin
+/home/ben/Work/Install/hwloc/lib
+/home/ben/Work/Install/hwloc/include
+/home/ben/Work/Install/hwloc/sbin
 /usr/bin
 /usr/local/sbin
 /usr/local/bin
@@ -93,10 +112,14 @@ PATH=`paste -d ":" -s << EOF
 /opt/intel/advisor_xe_2016.1.40.463413/bin64
 /opt/intel/advisor_xe_2016.1.40.463413/include
 /opt/intel/advisor_xe_2016.1.40.463413/lib64
-/home/ben/Work/Install/parsec_no_atomics/bin
-/home/ben/Work/Install/parsec_no_atomics/lib
-/home/ben/Work/Install/parsec_no_atomics/include
-/home/ben/Work/Install/parsec_no_atomics/include/dague/
+/opt/intel/compilers_and_libraries_2016.3.210/linux/compiler/lib/intel64_lin
+/home/ben/Work/Install/parsec/bin
+/home/ben/Work/Install/parsec/lib
+/home/ben/Work/Install/parsec/include
+/home/ben/Work/Install/parsec/include/dague
+/home/ben/Work/Install/parsec/include/parsec
+/home/ben/Work/Install/parsec/include/data_dist
+/home/ben/Work/Install/parsec/include/parsec/sys
 EOF
 `
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -119,7 +142,10 @@ EOF
 
 # STARPU SPECIFICS
 
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/home/ben/Work/Install/starpu/lib/pkgconfig:/home/ben/Work/Install/parsec/lib/pkgconfig"
+#export PKG_CONFIG_PATH="/home/ben/Work/Install/starpu/lib/pkgconfig:/home/ben/Work/Install/parsec_new/lib/pkgconfig:/$PKG_CONFIG_PATH"
+export LD_LIBRARY_PATH="/home/ben/Work/Install/openmpi/lib:"
+export PKG_CONFIG_PATH="/home/ben/Work/Install/starpu/lib/pkgconfig:/home/ben/Work/Install/parsec/lib/pkgconfig:"
+#export PKG_CONFIG_PATH="/home/ben/Work/Install/starpu/lib/pkgconfig:/home/ben/Work/Install/parsec_git_debug/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -129,6 +155,11 @@ export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/home/ben/Work/Install/starpu/lib/pkgco
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# 
+alias parsec_tools_prepare="source /home/ben/Work/Build/parsec/tools/profiling/python/utilities/bash.env"
+
+alias uxpop="urxvt -cd `pwd` &"
+alias xo="xdg-open"
 
 # grep aliases
 alias wgrep="grep -IRnm1 --exclude-dir=.svn --exclude-dir=.git --color=always"
@@ -164,3 +195,48 @@ alias edf_proxy="export PROXY='noevipncp2n.edf.fr:3128';export HTTP_PROXY='noevi
 alias clean_proxy="export PROXY='';export HTTP_PROXY='';export HTTPS_PROXY='';"
 alias vpninria="sudo ~/Documents/__vpn_setup/vpnsetup.sh; /opt/cisco/anyconnect/bin/vpn connect vpn.inria.fr/all"
 
+alias mendeley="/home/ben/.local/share/mendeleydesktop"
+
+bindkey -e
+bindkey 'OD' backward-word
+bindkey 'OC' forward-word
+
+function loadpath()
+{
+  dir=$(realpath -s $1)
+  export
+PKG_CONFIG_PATH=$dir/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}
+  export PATH=$dir/bin${PATH:+:$PATH}
+  export
+LIBRARY_PATH=$dir/lib:$dir/lib64:$dir/lib_so${LIBRARY_PATH:+:$LIBRARY_PATH}
+  export
+LD_RUN_PATH=$dir/lib:$dir/lib64:$dir/lib_so${LD_RUN_PATH:+:$LD_RUN_PATH}
+  export
+LD_LIBRARY_PATH=$dir/lib:$dir/lib64:$dir/lib_so${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+  export CPATH=$dir/include${CPATH:+:$CPATH}
+  export C_INCLUDE_PATH=$dir/include${C_INCLUDE_PATH:+:$C_INCLUDE_PATH}
+  export
+CPLUS_INCLUDE_PATH=$dir/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}
+  #export MANPATH=$dir/share/man/${MANPATH:+:$MANPATH}
+}
+
+function unloadpath()
+{
+  # TODO if ":" -> ""
+  dir=$(realpath -s $1)
+  export PKG_CONFIG_PATH=${PKG_CONFIG_PATH/$dir\/lib\/pkgconfig:/}
+  export PATH=${PATH/$dir\/bin:/}
+  export LIBRARY_PATH=${LIBRARY_PATH/$dir\/lib:/}
+  export LIBRARY_PATH=${LIBRARY_PATH/$dir\/lib64:/}
+  export LIBRARY_PATH=${LIBRARY_PATH/$dir\/lib_so:/}
+  export LD_RUN_PATH=${LD_RUN_PATH/$dir\/lib:/}
+  export LD_RUN_PATH=${LD_RUN_PATH/$dir\/lib64:/}
+  export LD_RUN_PATH=${LD_RUN_PATH/$dir\/lib_so:/}
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH/$dir\/lib:/}
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH/$dir\/lib64:/}
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH/$dir\/lib_so:/}
+  export CPATH=${CPATH/$dir\/include:/}
+  export C_INCLUDE_PATH=${C_INCLUDE_PATH/$dir\/include:/}
+  export CPLUS_INCLUDE_PATH=${CPLUS_INCLUDE_PATH/$dir\/include:/}
+  export MANPATH=${MANPATH/$dir\/share/man:/}
+}
